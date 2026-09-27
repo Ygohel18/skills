@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json.schemastore.org/component-tokens",
+  "system": "twitter-x-chirp",
+  "version": "1.0",
+  "tokens": {
+    "color": {
+      "colorBackground": { "light": "#FFFFFF", "dim": "#15202B", "lightsOut": "#000000" },
+      "colorSurface": { "light": "#F7F9F9", "dim": "#1E2732", "lightsOut": "#16181C" },
+      "colorBorder": { "light": "#EFF3F4", "dim": "#38444D", "lightsOut": "#2F3336" },
+      "colorTextPrimary": { "light": "#0F1419", "dim": "#F7F9F9", "lightsOut": "#E7E9EA" },
+      "colorTextSecondary": { "light": "#536471", "dim": "#8B98A5", "lightsOut": "#71767B" },
+      "colorAccent": "#1D9BF0",
+      "colorDanger": "#F4212E"
+    },
+    "typography": {
+      "fontFamily": "Chirp, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+      "tweetHeader": { "fontSize": "20px", "lineHeight": "24px", "fontWeight": "700" },
+      "tweetBody": { "fontSize": "15px", "lineHeight": "20px", "fontWeight": "400" },
+      "tweetMetadata": { "fontSize": "13px", "lineHeight": "16px", "fontWeight": "400" }
+    },
+    "shape": {
+      "radiusPill": "9999px",
+      "radiusMedia": "16px",
+      "radiusAvatar": "50%"
+    },
+    "spacing": {
+      "unit": "4px",
+      "timelinePaddingVertical": "12px",
+      "timelinePaddingHorizontal": "16px",
+      "columnFeedMaxWidth": "600px"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json.schemastore.org/component-tokens",
+  "system": "apple-hig",
+  "version": "1.0",
+  "tokens": {
+    "color": {
+      "systemBlue": { "light": "#007AFF", "dark": "#0A84FF" },
+      "systemGreen": { "light": "#34C759", "dark": "#30D158" },
+      "systemRed": { "light": "#FF3B30", "dark": "#FF453A" },
+      "systemOrange": { "light": "#FF9500", "dark": "#FF9F0A" },
+      "systemGray": { "light": "#8E8E93", "dark": "#8E8E93" },
+      "systemBackground": { "light": "#FFFFFF", "dark": "#000000" },
+      "secondarySystemBackground": { "light": "#F2F2F7", "dark": "#1C1C1E" },
+      "tertiarySystemBackground": { "light": "#FFFFFF", "dark": "#2C2C2E" },
+      "systemGroupedBackground": { "light": "#F2F2F7", "dark": "#000000" },
+      "label": { "light": "#000000", "dark": "#FFFFFF" },
+      "secondaryLabel": { "light": "rgba(60, 60, 67, 0.60)", "dark": "rgba(235, 235, 245, 0.60)" },
+      "tertiaryLabel": { "light": "rgba(60, 60, 67, 0.30)", "dark": "rgba(235, 235, 245, 0.30)" },
+      "separator": { "light": "rgba(60, 60, 67, 0.29)", "dark": "rgba(84, 84, 88, 0.65)" }
+    },
+    "typography": {
+      "fontFamily": "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', sans-serif",
+      "largeTitle": { "fontSize": "34pt", "lineHeight": "41pt", "fontWeight": "700" },
+      "title1": { "fontSize": "28pt", "lineHeight": "34pt", "fontWeight": "700" },
+      "title2": { "fontSize": "22pt", "lineHeight": "28pt", "fontWeight": "700" },
+      "headline": { "fontSize": "17pt", "lineHeight": "22pt", "fontWeight": "600" },
+      "body": { "fontSize": "17pt", "lineHeight": "22pt", "fontWeight": "400" },
+      "callout": { "fontSize": "16pt", "lineHeight": "21pt", "fontWeight": "400" },
+      "subheadline": { "fontSize": "15pt", "lineHeight": "20pt", "fontWeight": "400" },
+      "footnote": { "fontSize": "13pt", "lineHeight": "18pt", "fontWeight": "400" },
+      "caption1": { "fontSize": "12pt", "lineHeight": "16pt", "fontWeight": "400" }
+    },
+    "shape": {
+      "cornerSmall": "6pt",
+      "cornerMedium": "10pt",
+      "cornerLarge": "14pt",
+      "cornerContinuous": "true"
+    },
+    "spacing": {
+      "baseUnit": "8pt",
+      "marginHorizontal": "16pt",
+      "rowHeightDefault": "44pt"
+    }
+  }
+}

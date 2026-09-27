@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json.schemastore.org/component-tokens",
+  "system": "spotify-encore",
+  "version": "1.0",
+  "tokens": {
+    "color": {
+      "essentialBase": "#FFFFFF",
+      "essentialSubdued": "#B3B3B3",
+      "essentialNegative": "#F15E6C",
+      "essentialWarning": "#FFA42B",
+      "essentialPositive": "#1ED760",
+      "essentialAnnouncement": "#0D72EA",
+      "backgroundBase": "#121212",
+      "backgroundElevatedBase": "#242424",
+      "backgroundHighlight": "#1A1A1A",
+      "backgroundPress": "#000000",
+      "textBase": "#FFFFFF",
+      "textSubdued": "#A7A7A7",
+      "textNegative": "#F15E6C"
+    },
+    "typography": {
+      "fontFamily": "'Spotify Mix', 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif",
+      "title1": { "fontSize": "32px", "lineHeight": "36px", "fontWeight": "700" },
+      "title2": { "fontSize": "24px", "lineHeight": "28px", "fontWeight": "700" },
+      "title3": { "fontSize": "20px", "lineHeight": "24px", "fontWeight": "700" },
+      "bodyMedium": { "fontSize": "14px", "lineHeight": "18px", "fontWeight": "400" },
+      "bodyMediumBold": { "fontSize": "14px", "lineHeight": "18px", "fontWeight": "700" },
+      "bodySmall": { "fontSize": "12px", "lineHeight": "16px", "fontWeight": "400" }
+    },
+    "shape": {
+      "cornerSmall": "4px",
+      "cornerMedium": "8px",
+      "cornerFull": "500px"
+    },
+    "spacing": {
+      "spacer4": "4px",
+      "spacer8": "8px",
+      "spacer12": "12px",
+      "spacer16": "16px",
+      "spacer24": "24px",
+      "spacer32": "32px"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json.schemastore.org/component-tokens",
+  "system": "adobe-spectrum",
+  "version": "1.0",
+  "tokens": {
+    "color": {
+      "spectrumAliasBackgroundColorDefault": { "light": "#FFFFFF", "darkest": "#1D1D1D" },
+      "spectrumAliasBackgroundColorSecondary": { "light": "#F8F8F8", "darkest": "#252525" },
+      "spectrumAliasBackgroundColorTertiary": { "light": "#EAEAEA", "darkest": "#323232" },
+      "spectrumAliasTextColorDefault": { "light": "#222222", "darkest": "#E1E1E1" },
+      "spectrumAliasTextColorSecondary": { "light": "#6E6E6E", "darkest": "#909090" },
+      "spectrumAliasBorderColorDefault": { "light": "#D5D5D5", "darkest": "#3E3E3E" },
+      "spectrumAccentColor900": { "light": "#0265DC", "darkest": "#2680EB" },
+      "spectrumSemanticPositiveColorDefault": { "light": "#2D9D78", "darkest": "#27AB83" },
+      "spectrumSemanticNegativeColorDefault": { "light": "#E34850", "darkest": "#EC5B62" }
+    },
+    "typography": {
+      "fontFamily": "'Adobe Clean', 'Source Sans 3', Inter, sans-serif",
+      "headingXXL": { "fontSize": "36px", "lineHeight": "45px", "fontWeight": "700" },
+      "headingL": { "fontSize": "22px", "lineHeight": "28px", "fontWeight": "700" },
+      "headingS": { "fontSize": "16px", "lineHeight": "20px", "fontWeight": "700" },
+      "bodyM": { "fontSize": "14px", "lineHeight": "20px", "fontWeight": "400" },
+      "bodyS": { "fontSize": "12px", "lineHeight": "16px", "fontWeight": "400" }
+    },
+    "shape": {
+      "borderRadiusSmall": "2px",
+      "borderRadiusMedium": "4px",
+      "borderRadiusLarge": "8px",
+      "borderRadiusFull": "9999px"
+    },
+    "dimension": {
+      "size50": "4px",
+      "size100": "8px",
+      "size200": "16px",
+      "size300": "24px",
+      "size400": "32px",
+      "size500": "40px"
+    },
+    "shadow": {
+      "dropdown": "0 1px 4px 0 rgba(0, 0, 0, 0.15)",
+      "modal": "0 10px 30px 0 rgba(0, 0, 0, 0.25)"
+    }
+  }
+}

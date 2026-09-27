@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json.schemastore.org/component-tokens",
+  "system": "atlassian-design-system",
+  "version": "1.0",
+  "tokens": {
+    "color": {
+      "colorBackgroundNeutral": { "light": "#FFFFFF", "dark": "#1D2125" },
+      "colorBackgroundNeutralSubtle": { "light": "#F7F8F9", "dark": "#22272B" },
+      "colorBackgroundBrandBold": { "light": "#0C66E4", "dark": "#579DFF" },
+      "colorBackgroundBrandBoldHovered": { "light": "#0055CC", "dark": "#85B8FF" },
+      "colorBackgroundSuccessBold": { "light": "#1F845A", "dark": "#22A06B" },
+      "colorBackgroundWarningBold": "#E2B203",
+      "colorBackgroundDangerBold": { "light": "#CA3521", "dark": "#E34935" },
+      "colorText": { "light": "#172B4D", "dark": "#C7D1DB" },
+      "colorTextSubtle": { "light": "#626F86", "dark": "#8C9BAB" },
+      "colorBorder": { "light": "#DCDFE4", "dark": "#44546F" },
+      "colorBorderFocused": { "light": "#388BFF", "dark": "#85B8FF" }
+    },
+    "typography": {
+      "fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif",
+      "fontHeadingXLarge": { "fontSize": "29px", "lineHeight": "32px", "fontWeight": "600" },
+      "fontHeadingLarge": { "fontSize": "24px", "lineHeight": "28px", "fontWeight": "600" },
+      "fontHeadingMedium": { "fontSize": "20px", "lineHeight": "24px", "fontWeight": "600" },
+      "fontHeadingSmall": { "fontSize": "14px", "lineHeight": "16px", "fontWeight": "700" },
+      "fontBody": { "fontSize": "14px", "lineHeight": "20px", "fontWeight": "400" },
+      "fontBodySmall": { "fontSize": "12px", "lineHeight": "16px", "fontWeight": "400" }
+    },
+    "shape": {
+      "borderRadius050": "2px",
+      "borderRadius100": "3px",
+      "borderRadius200": "4px",
+      "borderRadius300": "8px",
+      "borderRadiusCircle": "9999px"
+    },
+    "spacing": {
+      "space050": "4px",
+      "space100": "8px",
+      "space150": "12px",
+      "space200": "16px",
+      "space300": "24px",
+      "space400": "32px"
+    },
+    "elevation": {
+      "surfaceRaised": "0px 1px 1px #091E4240, 0px 0px 1px #091E424F",
+      "surfaceOverlay": "0px 4px 8px -2px #091E4240, 0px 0px 1px #091E424F",
+      "surfaceModal": "0px 8px 12px -4px #091E424F, 0px 0px 1px #091E424F"
+    }
+  }
+}

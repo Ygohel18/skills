@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json.schemastore.org/component-tokens",
+  "system": "ibm-carbon-v11",
+  "version": "1.0",
+  "tokens": {
+    "color": {
+      "background": { "white": "#FFFFFF", "g10": "#F4F4F4", "g90": "#262626", "g100": "#161616" },
+      "layer01": { "white": "#F4F4F4", "g10": "#FFFFFF", "g90": "#393939", "g100": "#262626" },
+      "layer02": { "white": "#FFFFFF", "g10": "#F4F4F4", "g90": "#525252", "g100": "#393939" },
+      "layer03": { "white": "#F4F4F4", "g10": "#FFFFFF", "g90": "#6F6F6F", "g100": "#525252" },
+      "textPrimary": { "white": "#161616", "g10": "#161616", "g90": "#F4F4F4", "g100": "#F4F4F4" },
+      "textSecondary": { "white": "#525252", "g10": "#525252", "g90": "#C6C6C6", "g100": "#C6C6C6" },
+      "textPlaceholder": { "white": "#A8A8A8", "g10": "#A8A8A8", "g90": "#6F6F6F", "g100": "#6F6F6F" },
+      "textOnColor": "#FFFFFF",
+      "interactive": "#0F62FE",
+      "borderSubtle": { "white": "#E0E0E0", "g10": "#E0E0E0", "g90": "#393939", "g100": "#393939" },
+      "borderStrong": "#8D8D8D",
+      "focus": { "white": "#0F62FE", "g10": "#0F62FE", "g90": "#FFFFFF", "g100": "#FFFFFF" },
+      "supportError": { "light": "#DA1E28", "dark": "#FA4D56" },
+      "supportSuccess": { "light": "#24A148", "dark": "#42BE65" }
+    },
+    "typography": {
+      "fontFamily": "'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif",
+      "fontCode": "'IBM Plex Mono', 'Courier New', monospace",
+      "heading05": { "fontSize": "32px", "lineHeight": "40px", "fontWeight": "600" },
+      "heading03": { "fontSize": "20px", "lineHeight": "26px", "fontWeight": "600" },
+      "heading01": { "fontSize": "14px", "lineHeight": "18px", "fontWeight": "600" },
+      "bodyShort01": { "fontSize": "14px", "lineHeight": "18px", "fontWeight": "400" },
+      "label01": { "fontSize": "12px", "lineHeight": "16px", "fontWeight": "400" }
+    },
+    "shape": {
+      "borderRadius": "0px"
+    },
+    "spacing": {
+      "spacing01": "2px",
+      "spacing02": "4px",
+      "spacing03": "8px",
+      "spacing04": "12px",
+      "spacing05": "16px",
+      "spacing06": "24px",
+      "spacing07": "32px",
+      "spacing08": "40px",
+      "spacing09": "48px"
+    },
+    "density": {
+      "rowXs": "24px",
+      "rowSm": "32px",
+      "rowMd": "40px",
+      "rowLg": "48px",
+      "rowXl": "64px"
+    }
+  }
+}

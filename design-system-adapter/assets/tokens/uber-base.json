@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json.schemastore.org/component-tokens",
+  "system": "uber-base-web",
+  "version": "1.0",
+  "tokens": {
+    "color": {
+      "backgroundPrimary": { "light": "#FFFFFF", "dark": "#000000" },
+      "backgroundSecondary": { "light": "#F6F6F6", "dark": "#141414" },
+      "backgroundInversePrimary": { "light": "#000000", "dark": "#FFFFFF" },
+      "contentPrimary": { "light": "#000000", "dark": "#FFFFFF" },
+      "contentSecondary": { "light": "#545454", "dark": "#AFAFAF" },
+      "contentTertiary": { "light": "#757575", "dark": "#6B6B6B" },
+      "borderOpaque": { "light": "#E2E2E2", "dark": "#292929" },
+      "accent": "#276EF1",
+      "negative": "#E11900",
+      "positive": "#0E8345",
+      "warning": "#FFE1A5"
+    },
+    "typography": {
+      "fontFamily": "'Uber Move Text', -apple-system, BlinkMacSystemFont, sans-serif",
+      "fontDisplay": "'Uber Move', -apple-system, BlinkMacSystemFont, sans-serif",
+      "font1050": { "fontSize": "40px", "lineHeight": "52px", "fontWeight": "700" },
+      "font850": { "fontSize": "32px", "lineHeight": "40px", "fontWeight": "700" },
+      "font650": { "fontSize": "24px", "lineHeight": "32px", "fontWeight": "600" },
+      "font450": { "fontSize": "16px", "lineHeight": "22px", "fontWeight": "600" },
+      "font250": { "fontSize": "14px", "lineHeight": "20px", "fontWeight": "400" },
+      "font150": { "fontSize": "12px", "lineHeight": "16px", "fontWeight": "400" }
+    },
+    "shape": {
+      "radius100": "2px",
+      "radius200": "4px",
+      "radius300": "8px",
+      "radiusFull": "9999px"
+    },
+    "spacing": {
+      "scale100": "4px",
+      "scale200": "8px",
+      "scale300": "12px",
+      "scale400": "16px",
+      "scale500": "20px",
+      "scale600": "24px",
+      "scale800": "32px"
+    },
+    "shadow": {
+      "lighting400": "0 1px 4px 0 rgba(0, 0, 0, 0.12)",
+      "lighting600": "0 4px 16px 0 rgba(0, 0, 0, 0.16)",
+      "lighting1000": "0 12px 32px 0 rgba(0, 0, 0, 0.24)"
+    }
+  }
+}

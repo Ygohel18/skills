@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json.schemastore.org/component-tokens",
+  "system": "microsoft-fluent-2",
+  "version": "1.0",
+  "tokens": {
+    "color": {
+      "colorBrandBackground": { "light": "#0F6CBD", "dark": "#115EA3" },
+      "colorBrandBackgroundHover": { "light": "#115EA3", "dark": "#0F6CBD" },
+      "colorBrandBackgroundPressed": { "light": "#0C3B5E", "dark": "#0C3B5E" },
+      "colorBrandForeground1": { "light": "#0F6CBD", "dark": "#479EF5" },
+      "colorNeutralBackground1": { "light": "#FFFFFF", "dark": "#292929" },
+      "colorNeutralBackground2": { "light": "#FAFAFA", "dark": "#242424" },
+      "colorNeutralBackground3": { "light": "#F5F5F5", "dark": "#1F1F1F" },
+      "colorNeutralForeground1": { "light": "#242424", "dark": "#FFFFFF" },
+      "colorNeutralForeground2": { "light": "#424242", "dark": "#D6D6D6" },
+      "colorNeutralForeground3": { "light": "#616161", "dark": "#ADADAD" },
+      "colorNeutralStroke1": { "light": "#D1D1D1", "dark": "#404040" },
+      "colorNeutralStroke2": { "light": "#E0E0E0", "dark": "#333333" }
+    },
+    "typography": {
+      "fontFamily": "'Segoe UI Variable', 'Segoe UI', -apple-system, sans-serif",
+      "display": { "fontSize": "68px", "lineHeight": "92px", "fontWeight": "600" },
+      "title1": { "fontSize": "32px", "lineHeight": "40px", "fontWeight": "600" },
+      "title2": { "fontSize": "24px", "lineHeight": "32px", "fontWeight": "600" },
+      "subtitle1": { "fontSize": "20px", "lineHeight": "26px", "fontWeight": "600" },
+      "body1": { "fontSize": "14px", "lineHeight": "20px", "fontWeight": "400" },
+      "body2": { "fontSize": "12px", "lineHeight": "16px", "fontWeight": "400" },
+      "caption1": { "fontSize": "12px", "lineHeight": "16px", "fontWeight": "400" }
+    },
+    "shape": {
+      "borderRadiusNone": "0px",
+      "borderRadiusSmall": "2px",
+      "borderRadiusMedium": "4px",
+      "borderRadiusLarge": "6px",
+      "borderRadiusXLarge": "8px",
+      "borderRadiusCircular": "10000px"
+    },
+    "shadow": {
+      "shadow2": "0 0 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.14)",
+      "shadow4": "0 0 2px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.14)",
+      "shadow8": "0 0 2px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.14)",
+      "shadow16": "0 0 2px rgba(0,0,0,0.12), 0 8px 16px rgba(0,0,0,0.14)"
+    }
+  }
+}

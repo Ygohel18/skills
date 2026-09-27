@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json.schemastore.org/component-tokens",
+  "system": "shopify-polaris-v12",
+  "version": "1.0",
+  "tokens": {
+    "color": {
+      "pColorBg": { "light": "#F1F2F4", "dark": "#1A1A1A" },
+      "pColorBgSurface": { "light": "#FFFFFF", "dark": "#202123" },
+      "pColorBgSurfaceSecondary": { "light": "#F7F7F8", "dark": "#2A2B2D" },
+      "pColorText": { "light": "#303030", "dark": "#E3E3E3" },
+      "pColorTextSecondary": { "light": "#616161", "dark": "#999999" },
+      "pColorBorder": { "light": "#D4D4D4", "dark": "#404040" },
+      "pColorBorderSubtle": { "light": "#E3E3E3", "dark": "#333333" },
+      "pColorBgInteractive": { "light": "#303030", "dark": "#E3E3E3" },
+      "pColorBgFillBrand": "#008060",
+      "pColorBgFillSuccess": { "light": "#AEE9D1", "dark": "#1A3B32" },
+      "pColorTextSuccess": { "light": "#005E46", "dark": "#2DC28D" },
+      "pColorBgFillAttention": { "light": "#FFEA8A", "dark": "#4F3C00" },
+      "pColorBgFillCritical": { "light": "#FED3D1", "dark": "#4A1B1D" }
+    },
+    "typography": {
+      "fontFamily": "-apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, sans-serif",
+      "pFontSize800": { "fontSize": "32px", "lineHeight": "40px", "fontWeight": "700" },
+      "pFontSize600": { "fontSize": "24px", "lineHeight": "32px", "fontWeight": "700" },
+      "pFontSize500": { "fontSize": "20px", "lineHeight": "28px", "fontWeight": "600" },
+      "pFontSize400": { "fontSize": "16px", "lineHeight": "24px", "fontWeight": "600" },
+      "pFontSize350": { "fontSize": "14px", "lineHeight": "20px", "fontWeight": "400" },
+      "pFontSize300": { "fontSize": "12px", "lineHeight": "16px", "fontWeight": "400" }
+    },
+    "shape": {
+      "pBorderRadius050": "2px",
+      "pBorderRadius100": "4px",
+      "pBorderRadius200": "8px",
+      "pBorderRadius300": "12px",
+      "pBorderRadiusFull": "9999px"
+    },
+    "spacing": {
+      "pSpace050": "2px",
+      "pSpace100": "4px",
+      "pSpace150": "6px",
+      "pSpace200": "8px",
+      "pSpace300": "12px",
+      "pSpace400": "16px",
+      "pSpace500": "20px",
+      "pSpace600": "24px",
+      "pSpace800": "32px"
+    },
+    "shadow": {
+      "pShadow050": "0px 1px 0px rgba(0, 0, 0, 0.05)",
+      "pShadow100": "0px 2px 4px rgba(0, 0, 0, 0.05)",
+      "pShadow200": "0px 4px 8px rgba(0, 0, 0, 0.08)",
+      "pShadow400": "0px 12px 24px rgba(0, 0, 0, 0.12)"
+    }
+  }
+}

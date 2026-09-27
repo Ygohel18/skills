@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json.schemastore.org/component-tokens",
+  "system": "salesforce-lightning-design-system",
+  "version": "1.0",
+  "tokens": {
+    "color": {
+      "colorBrand": "#0176D3",
+      "colorBrandDark": "#014486",
+      "colorBackground": "#F3F3F3",
+      "colorBackgroundAlt": "#FFFFFF",
+      "colorTextDefault": "#181818",
+      "colorTextWeak": "#444444",
+      "colorBorder": "#C9C9C9",
+      "colorBorderSeparator": "#E5E5E5",
+      "colorBackgroundSuccess": "#2E844A",
+      "colorBackgroundWarning": "#FE9339",
+      "colorBackgroundError": "#EA001E"
+    },
+    "typography": {
+      "fontFamily": "'Salesforce Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+      "fontSizeHeadingLarge": { "fontSize": "24px", "lineHeight": "30px", "fontWeight": "700" },
+      "fontSizeHeadingMedium": { "fontSize": "18px", "lineHeight": "24px", "fontWeight": "700" },
+      "fontSizeHeadingSmall": { "fontSize": "14px", "lineHeight": "20px", "fontWeight": "700" },
+      "fontSizeTextMedium": { "fontSize": "13px", "lineHeight": "18px", "fontWeight": "400" },
+      "fontSizeTextSmall": { "fontSize": "11px", "lineHeight": "14px", "fontWeight": "400" }
+    },
+    "shape": {
+      "borderRadiusSmall": "2px",
+      "borderRadiusMedium": "4px",
+      "borderRadiusLarge": "8px",
+      "borderRadiusCircle": "50%"
+    },
+    "spacing": {
+      "spacingXxxSmall": "2px",
+      "spacingXxSmall": "4px",
+      "spacingXSmall": "8px",
+      "spacingSmall": "12px",
+      "spacingMedium": "16px",
+      "spacingLarge": "24px",
+      "spacingXLarge": "32px"
+    },
+    "shadow": {
+      "elevationShadow1": "0 2px 2px 0 rgba(0, 0, 0, 0.1)",
+      "elevationShadow2": "0 4px 6px 0 rgba(0, 0, 0, 0.16)",
+      "elevationShadow3": "0 8px 12px 0 rgba(0, 0, 0, 0.2)"
+    }
+  }
+}

@@ -1,0 +1,387 @@
+#!/usr/bin/env python3
+"""
+generate_design_md.py — Scaffold a DESIGN.md from collected analysis data.
+
+Usage:
+    python3 scripts/generate_design_md.py \
+        --project "ProjectName" \
+        --output DESIGN.md \
+        [--colors "primary=#6366F1,surface=#1E293B,text=#F8FAFC,muted=#94A3B8,border=#334155"] \
+        [--font-heading "Inter" --font-body "Inter"] \
+        [--radius 8] \
+        [--mode dark]
+
+Output:
+    A pre-filled DESIGN.md written to --output (default: DESIGN.md in CWD).
+
+Dependencies: none (stdlib only)
+
+Error handling:
+    - Bad color format: prints example and exits with code 1
+    - Bad radius: prints valid range and exits with code 1
+    - Output path not writable: prints error and exits with code 1
+"""
+
+import sys
+import argparse
+import os
+from datetime import datetime
+
+
+HEX_COLORS_EXAMPLE = "primary=#6366F1,surface=#1E293B,text=#F8FAFC,muted=#94A3B8,border=#334155"
+
+
+def parse_colors(raw: str) -> dict[str, str]:
+    """Parse 'key=#HEX,key2=#HEX2' into a dict."""
+    result = {}
+    if not raw:
+        return result
+    for part in raw.split(","):
+        part = part.strip()
+        if "=" not in part:
+            print(f"ERROR: Bad color entry '{part}'. Expected format: name=#RRGGBB", file=sys.stderr)
+            print(f"Example: --colors \"{HEX_COLORS_EXAMPLE}\"", file=sys.stderr)
+            sys.exit(1)
+        key, val = part.split("=", 1)
+        key = key.strip().lower().replace(" ", "-")
+        val = val.strip()
+        if not val.startswith("#") or len(val) not in (4, 7):
+            print(f"ERROR: '{val}' is not a valid hex color. Use #RGB or #RRGGBB.", file=sys.stderr)
+            sys.exit(1)
+        result[key] = val
+    return result
+
+
+def hex_to_hsl_approx(hex_color: str) -> str:
+    """Rough hex → HSL approximation for CSS variable comments."""
+    h = hex_color.lstrip("#")
+    if len(h) == 3:
+        h = "".join(c * 2 for c in h)
+    try:
+        r, g, b = int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
+        r_, g_, b_ = r / 255, g / 255, b / 255
+        cmax, cmin = max(r_, g_, b_), min(r_, g_, b_)
+        delta = cmax - cmin
+        l = (cmax + cmin) / 2
+        if delta == 0:
+            hue = sat = 0.0
+        else:
+            sat = delta / (1 - abs(2 * l - 1))
+            if cmax == r_:
+                hue = 60 * (((g_ - b_) / delta) % 6)
+            elif cmax == g_:
+                hue = 60 * ((b_ - r_) / delta + 2)
+            else:
+                hue = 60 * ((r_ - g_) / delta + 4)
+        return f"hsl({hue:.0f}, {sat*100:.0f}%, {l*100:.0f}%)"
+    except Exception:
+        return hex_color
+
+
+def build_design_md(
+    project: str,
+    colors: dict[str, str],
+    font_heading: str,
+    font_body: str,
+    radius: int,
+    mode: str,
+) -> str:
+    now = datetime.now().strftime("%Y-%m-%d")
+
+    # Default palette if none provided
+    if not colors:
+        if mode == "dark":
+            colors = {
+                "primary": "#6366F1",
+                "primary-foreground": "#FFFFFF",
+                "secondary": "#818CF8",
+                "background": "#0F172A",
+                "surface": "#1E293B",
+                "text": "#F8FAFC",
+                "muted": "#94A3B8",
+                "border": "#334155",
+                "destructive": "#EF4444",
+                "success": "#22C55E",
+                "warning": "#F59E0B",
+            }
+        else:
+            colors = {
+                "primary": "#6366F1",
+                "primary-foreground": "#FFFFFF",
+                "secondary": "#818CF8",
+                "background": "#FFFFFF",
+                "surface": "#F8FAFC",
+                "text": "#0F172A",
+                "muted": "#64748B",
+                "border": "#E2E8F0",
+                "destructive": "#EF4444",
+                "success": "#16A34A",
+                "warning": "#D97706",
+            }
+
+    # CSS variables block
+    css_vars = "\n".join(
+        f"  --color-{name}: {val};  /* {hex_to_hsl_approx(val)} */"
+        for name, val in colors.items()
+    )
+
+    # Color table
+    color_table_rows = "\n".join(
+        f"| `--color-{name}` | `{val}` | `{hex_to_hsl_approx(val)}` | {name.replace('-', ' ').title()} |"
+        for name, val in colors.items()
+    )
+
+    # Tailwind extend block
+    tw_colors = "\n".join(
+        f"          '{name}': '{val}'," for name, val in colors.items()
+    )
+
+    radius_map = {
+        4:  {"sm": "2px",  "md": "4px",  "lg": "6px",  "xl": "8px",  "pill": "9999px"},
+        8:  {"sm": "4px",  "md": "8px",  "lg": "12px", "xl": "16px", "pill": "9999px"},
+        12: {"sm": "6px",  "md": "12px", "lg": "16px", "xl": "20px", "pill": "9999px"},
+        16: {"sm": "8px",  "md": "12px", "lg": "16px", "xl": "24px", "pill": "9999px"},
+    }
+    closest_radius = min(radius_map.keys(), key=lambda k: abs(k - radius))
+    rmap = radius_map[closest_radius]
+
+    content = f"""# DESIGN.md — {project}
+
+> Generated by `scripts/generate_design_md.py` on {now}.
+> Review every value. Replace placeholders with exact values from your design analysis.
+
+---
+
+## 1. Design Mode
+
+**Mode:** {mode.capitalize()}
+**Base unit:** 4px (Tailwind default spacing scale)
+
+---
+
+## 2. Color System
+
+### CSS Variables
+
+```css
+/* globals.css or app.css */
+:root {{
+{css_vars}
+}}
+```
+
+### Color Token Table
+
+| CSS Variable | Hex | HSL (approx) | Semantic Role |
+|---|---|---|---|
+{color_table_rows}
+
+### Tailwind Config Extension
+
+```js
+// tailwind.config.js / tailwind.config.ts
+theme: {{
+  extend: {{
+    colors: {{
+{tw_colors}
+    }},
+  }},
+}},
+```
+
+---
+
+## 3. Typography
+
+| Element | Font Family | Size | Weight | Line Height | Tracking |
+|---|---|---|---|---|---|
+| `h1` | {font_heading} | 56px / `text-5xl` | 700 Bold | 1.1 | `-0.02em` |
+| `h2` | {font_heading} | 40px / `text-4xl` | 700 Bold | 1.2 | `-0.01em` |
+| `h3` | {font_heading} | 28px / `text-3xl` | 600 SemiBold | 1.3 | `normal` |
+| `h4` | {font_heading} | 22px / `text-2xl` | 600 SemiBold | 1.4 | `normal` |
+| Body | {font_body} | 16px / `text-base` | 400 Regular | 1.6 | `normal` |
+| Small | {font_body} | 14px / `text-sm` | 400 Regular | 1.5 | `normal` |
+| Caption | {font_body} | 12px / `text-xs` | 400 Regular | 1.4 | `0.02em` |
+| Label | {font_body} | 14px / `text-sm` | 500 Medium | 1.4 | `normal` |
+| Badge | {font_body} | 12px / `text-xs` | 500 Medium | 1 | `0.05em` |
+| Button | {font_body} | 16px / `text-base` | 600 SemiBold | 1 | `normal` |
+| Mono | `ui-monospace` | 14px / `text-sm` | 400 Regular | 1.6 | `normal` |
+
+**Google Fonts import:**
+```css
+@import url('https://fonts.googleapis.com/css2?family={font_heading.replace(" ", "+")}:wght@400;500;600;700;800&display=swap');
+```
+
+---
+
+## 4. Spacing Scale
+
+| Token | Value | Tailwind | Usage |
+|---|---|---|---|
+| `space-1` | 4px | `p-1 / m-1` | Micro gaps |
+| `space-2` | 8px | `p-2 / m-2` | Tight padding |
+| `space-3` | 12px | `p-3 / m-3` | Compact elements |
+| `space-4` | 16px | `p-4 / m-4` | Standard gap |
+| `space-6` | 24px | `p-6 / m-6` | Card padding |
+| `space-8` | 32px | `p-8 / m-8` | Section sub-gap |
+| `space-12` | 48px | `p-12 / m-12` | Mobile section padding |
+| `space-16` | 64px | `p-16 / m-16` | Desktop section padding |
+| `space-20` | 80px | `p-20 / m-20` | Hero padding |
+| `space-24` | 96px | `p-24 / m-24` | Large hero padding |
+
+---
+
+## 5. Border Radius
+
+| Token | Value | Tailwind | Usage |
+|---|---|---|---|
+| `radius-sm`   | {rmap["sm"]}    | `rounded-sm` | Badges, inputs |
+| `radius-md`   | {rmap["md"]}    | `rounded-md` | Buttons, small cards |
+| `radius-lg`   | {rmap["lg"]}    | `rounded-lg` | Cards, modals |
+| `radius-xl`   | {rmap["xl"]}    | `rounded-xl` | Large cards, dialogs |
+| `radius-pill` | {rmap["pill"]} | `rounded-full` | Pills, avatar |
+
+---
+
+## 6. Shadows
+
+| Token | CSS Value | Tailwind | Usage |
+|---|---|---|---|
+| `shadow-sm`   | `0 1px 3px rgba(0,0,0,0.1)` | `shadow-sm` | Subtle lift |
+| `shadow-card` | `0 4px 16px rgba(0,0,0,0.12)` | `shadow-md` | Cards |
+| `shadow-elevated` | `0 8px 32px rgba(0,0,0,0.18)` | `shadow-lg` | Modals |
+| `shadow-primary`  | `0 4px 24px rgba(99,102,241,0.35)` | custom | Primary CTAs |
+
+---
+
+## 7. Component Tokens
+
+### Button
+
+| Variant | Background | Text | Border | Hover |
+|---|---|---|---|---|
+| Primary | `--color-primary` | `--color-primary-foreground` | none | `opacity-90` + `translateY(-1px)` |
+| Outline | transparent | `--color-primary` | `--color-primary` | `bg-primary/10` |
+| Ghost | transparent | `--color-text` | none | `bg-surface` |
+| Destructive | `--color-destructive` | white | none | `opacity-90` |
+
+Button sizes:
+- `sm`: `h-8 px-3 text-sm rounded-md`
+- `md`: `h-9 px-4 text-sm rounded-lg`
+- `lg`: `h-11 px-6 text-base rounded-lg`
+
+### Input / Form Field
+
+- Height: `h-9` (36px)
+- Border: `1px solid --color-border`
+- Focus: `ring-2 ring-primary ring-offset-2`
+- Radius: `rounded-md`
+- Padding: `px-3 py-2`
+- Placeholder color: `--color-muted`
+
+### Card
+
+- Background: `--color-surface`
+- Border: `1px solid --color-border`
+- Radius: `rounded-xl` (12–16px)
+- Padding: `p-6`
+- Shadow: `shadow-card`
+- Hover: `translateY(-4px)` + deeper shadow
+
+---
+
+## 8. Animation Tokens
+
+| Token | Value | Usage |
+|---|---|---|
+| `duration-fast` | `150ms` | Button press, checkbox |
+| `duration-base` | `200ms` | Hover states, card lift |
+| `duration-slow` | `300ms` | Modal open, dropdown |
+| `duration-page` | `400ms` | Page transitions |
+| `easing-default` | `cubic-bezier(0.4,0,0.2,1)` | Most transitions |
+| `easing-bounce` | `cubic-bezier(0.34,1.56,0.64,1)` | Playful reveal |
+
+---
+
+## 9. Breakpoints
+
+| Name | Min Width | Target |
+|---|---|---|
+| `sm` | 640px | Large phones |
+| `md` | 768px | Tablets |
+| `lg` | 1024px | Small laptops |
+| `xl` | 1280px | Desktop |
+| `2xl` | 1536px | Large desktop |
+
+Container: `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`
+
+---
+
+## 10. Review Checklist
+
+- [ ] All color values verified against screenshot (not just guesses)
+- [ ] Font family confirmed (check Google Fonts or system font stack)
+- [ ] Border radius matches observed rounding in screenshot
+- [ ] Shadow values match observed depth/softness
+- [ ] Spacing scale matches section padding in screenshot
+- [ ] Component tokens match all visible button/card/input variants
+- [ ] Dark mode variables added if site supports dark mode
+"""
+    return content
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Scaffold a DESIGN.md from analyzed design data."
+    )
+    parser.add_argument("--project", default="MyProject", help="Project name (default: MyProject)")
+    parser.add_argument("--output", default="DESIGN.md", help="Output file path (default: DESIGN.md)")
+    parser.add_argument(
+        "--colors", default="",
+        help=f"Comma-separated color map. Example: \"{HEX_COLORS_EXAMPLE}\""
+    )
+    parser.add_argument("--font-heading", default="Inter", help="Heading font (default: Inter)")
+    parser.add_argument("--font-body", default="Inter", help="Body font (default: Inter)")
+    parser.add_argument("--radius", type=int, default=8, help="Base border radius in px (default: 8)")
+    parser.add_argument("--mode", choices=["light", "dark"], default="light", help="Color mode (default: light)")
+    args = parser.parse_args()
+
+    if args.radius < 0 or args.radius > 32:
+        print(f"ERROR: --radius must be between 0 and 32, got {args.radius}", file=sys.stderr)
+        sys.exit(1)
+
+    colors = parse_colors(args.colors)
+
+    try:
+        out_dir = os.path.dirname(os.path.abspath(args.output))
+        os.makedirs(out_dir, exist_ok=True)
+    except OSError as e:
+        print(f"ERROR: Cannot create output directory: {e}", file=sys.stderr)
+        sys.exit(1)
+
+    content = build_design_md(
+        project=args.project,
+        colors=colors,
+        font_heading=args.font_heading,
+        font_body=args.font_body,
+        radius=args.radius,
+        mode=args.mode,
+    )
+
+    try:
+        with open(args.output, "w", encoding="utf-8") as f:
+            f.write(content)
+        print(f"✓ DESIGN.md written to: {args.output}")
+        print(f"  Colors: {len(colors) or 'defaults used'}")
+        print(f"  Font:   {args.font_heading} / {args.font_body}")
+        print(f"  Radius: {args.radius}px base")
+        print(f"  Mode:   {args.mode}")
+        print()
+        print("Next: review every value in DESIGN.md and adjust to match your screenshot analysis.")
+    except OSError as e:
+        print(f"ERROR: Cannot write to '{args.output}': {e}", file=sys.stderr)
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()
