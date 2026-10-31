@@ -23,6 +23,7 @@ These skills give AI coding agents operational checklists, security guardrails, 
 | [`secrets-and-config-management`](./secrets-and-config-management) | Separate secrets from config, enforce `.env.example`, CI vaults, secret rotation, and Gitleaks scanning. | `add an API key`, `store credential`, `committed secret`, `secrets in CI` |
 | [`testing-strategy`](./testing-strategy) | Structure test pyramids, test contracts over implementation details, eliminate flaky tests, and framework idioms. | `write tests for this`, `what should I test`, `test is flaky`, `test coverage` |
 | [`ui-clone-skill`](./ui-clone-skill) | Screenshot-to-code UI cloning, design system tokenization, and custom multi-stack component generation. | `clone this UI`, `screenshot to code`, `build component library` |
+| [`ui-slop-remediation`](./ui-slop-remediation) | Audit and transform vibecoded AI slop (purple gradients, glows, emoji badges, hype copy) into crafted UI. | `unslop`, `de-slop`, `clean up AI UI`, `slop remediation`, `fix vibecoded interface` |
 | [`universal-coding-standards`](./universal-coding-standards) | 10 universal engineering pillars (naming, error handling, SRP, security, testing) across any language. | `write code`, `refactor this`, `is this good code`, `clean code standards` |
 
 ---
