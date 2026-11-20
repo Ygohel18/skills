@@ -26,6 +26,7 @@ These skills give AI coding agents operational checklists, security guardrails, 
 | [`ui-clone-skill`](./ui-clone-skill) | Screenshot-to-code UI cloning, design system tokenization, and custom multi-stack component generation. | `clone this UI`, `screenshot to code`, `build component library` |
 | [`ui-slop-remediation`](./ui-slop-remediation) | Audit and transform vibecoded AI slop (purple gradients, glows, emoji badges, hype copy) into crafted UI. | `unslop`, `de-slop`, `clean up AI UI`, `slop remediation`, `fix vibecoded interface` |
 | [`universal-coding-standards`](./universal-coding-standards) | 10 universal engineering pillars (naming, error handling, SRP, security, testing) across any language. | `write code`, `refactor this`, `is this good code`, `clean code standards` |
+| [`web-app-security-audit`](./web-app-security-audit) | Audit web apps for logic bugs, injection sinks, SSRF, XSS, and RCE across Python (Django/FastAPI), PHP (Laravel/CodeIgniter), and Node (Next/Nest/Express). | `audit web security`, `Django security audit`, `FastAPI check`, `Laravel audit`, `CodeIgniter check`, `SQL injection audit` |
 
 ---
 
